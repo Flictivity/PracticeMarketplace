@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:PracticeMarketplace.Pages"
       xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="720" d:DesignWidth="1280"
       Title="MainPage">
 
     <Grid>
@@ -20,25 +20,53 @@
             <RowDefinition Height="10*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+        <Button Grid.Row="2"
+                Grid.Column="1"
+                Content="Выбрать изображение"
+                Click="AddImageBtnClick"/>
         <Grid Grid.Column="1" Grid.Row="1">
-            <ListView d:ItemsSource="{d:SampleData ItemCount=5}">
+            <ListView d:ItemsSource="{d:SampleData ItemCount=5}" 
+                      x:Name="lvProducts">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <material:Card>
-                            <Grid>
+                            <Grid Margin="10">
                                 <StackPanel>
-                                    <TextBlock Style="{DynamicResource MaterialDesignCaptionTextBlock}" Text="123"/>
-                                    <Image Source="/Images/logo.png/" Width="100" Height="100"/>
+                                    <Image Source="{Binding Image}" 
+                                           Width="200" 
+                                           Height="200"/>
+                                    <TextBlock HorizontalAlignment="Left" 
+                                               Style="{DynamicResource MaterialDesignHeadline5TextBlock}" 
+                                               Text="{Binding Name}"/>
                                     <StackPanel Orientation="Horizontal">
-                                        <Button Content="В корзину" Margin="0 0 10 0"/>
-                                        <Button Content="+1" Background="Black"/>
-                                        <Button Style="{DynamicResource MaterialDesignIconButton}" Content="{material:PackIcon Kind=ReadMore}"/>
+                                        <TextBlock HorizontalAlignment="Left" 
+                                                   Style="{DynamicResource MaterialDesignHeadline6TextBlock}" 
+                                                   FontWeight="Bold" 
+                                                   Text="Цена:"/>
+                                        <TextBlock HorizontalAlignment="Left" 
+                                                   Style="{DynamicResource MaterialDesignHeadline6TextBlock}" 
+                                                   Text="{Binding Cost}" 
+                                                   Margin="5 0 0 0"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Button Style="{DynamicResource MaterialDesignIconButton}" 
+                                                Content="{material:PackIcon Kind=Remove}"
+                                                Visibility="{Binding RemoveBtnVisibility}"
+                                                ToolTip="Удалить"/>
+                                        <Button Style="{DynamicResource MaterialDesignIconButton}" 
+                                                Content="{material:PackIcon Kind={Binding Icon}}" 
+                                                ToolTip="Добавить в корзину"/>
                                     </StackPanel>
                                 </StackPanel>
                             </Grid>
                         </material:Card>
                     </DataTemplate>
                 </ListView.ItemTemplate>
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Vertical"/>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
             </ListView>
         </Grid>
     </Grid>

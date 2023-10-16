@@ -104,6 +104,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="ADO\Extensions\Product.cs" />
     <Compile Include="ADO\Order.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
@@ -174,7 +175,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Resource Include="Images\logo.png" />
   </ItemGroup>

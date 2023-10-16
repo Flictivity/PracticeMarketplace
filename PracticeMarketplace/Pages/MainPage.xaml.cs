@@ -1,17 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Microsoft.Win32;
+using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace PracticeMarketplace.Pages
 {
@@ -23,6 +14,24 @@ namespace PracticeMarketplace.Pages
         public MainPage()
         {
             InitializeComponent();
+            lvProducts.ItemsSource = App.Connection.Product.ToList();
+        }
+
+        private void AddImageBtnClick(object sender, RoutedEventArgs e)
+        {
+            var window = new OpenFileDialog();
+            window.Filter = "Image files (*.png;*.jpg)|*.png;*.jpg";
+
+            if (window.ShowDialog() != true)
+            {
+                MessageBox.Show($"не выбрано изоражение!",
+        "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+            var byteArray = File.ReadAllBytes(window.FileName);
+            var product = App.Connection.Product.FirstOrDefault(x => x.Id == 1);
+            product.Image = byteArray;
+            App.Connection.SaveChangesAsync();
         }
     }
 }

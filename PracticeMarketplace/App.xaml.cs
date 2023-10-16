@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using PracticeMarketplace.ADO;
 using System.Windows;
 
 namespace PracticeMarketplace
@@ -13,5 +8,7 @@ namespace PracticeMarketplace
     /// </summary>
     public partial class App : Application
     {
+        public static PracticeMarketplaceEntities Connection = new PracticeMarketplaceEntities();
+        public static User CurrentUser;
     }
 }
