@@ -5,8 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PracticeMarketplace"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="720" Width="1280"
+        xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes">
     <Grid>
-        <Button Width="100" Height="100">123</Button>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="3*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" Margin="17,0,17,0">
+            <Image Source="/Images/logo.png" Width="200" Height="200"/>
+            <Button material:ButtonAssist.CornerRadius="10" FontSize="24" Height="50" Margin="0,0,0,30" Click="MainPageNavigate">Главная</Button>
+            <Button material:ButtonAssist.CornerRadius="10" FontSize="24" Height="50" Margin="0,0,0,30">Корзина</Button>
+            <Button material:ButtonAssist.CornerRadius="10" FontSize="24" Height="50" Margin="0,0,0,30">Заказы</Button>
+            <Button material:ButtonAssist.CornerRadius="10" FontSize="24" Height="50" Margin="0,0,0,30">Профиль</Button>
+        </StackPanel>
+        <Frame x:Name="Frame" Grid.Column="1" Grid.Row="1" Background="White" NavigationUIVisibility="Hidden"></Frame>    
     </Grid>
 </Window>
