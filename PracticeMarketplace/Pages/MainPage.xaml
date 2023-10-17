@@ -48,14 +48,19 @@
                                                    Text="{Binding Cost}" 
                                                    Margin="5 0 0 0"/>
                                     </StackPanel>
-                                    <StackPanel Orientation="Horizontal">
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                                         <Button Style="{DynamicResource MaterialDesignIconButton}" 
-                                                Content="{material:PackIcon Kind=Remove}"
+                                                Content="{material:PackIcon Kind=MinusCircle}"
                                                 Visibility="{Binding RemoveBtnVisibility}"
-                                                ToolTip="Удалить"/>
+                                                ToolTip="Удалить"
+                                                Click="RemoveFromBasketBtnClick"
+                                                Tag="{Binding Id}"/>
+                                        <TextBlock Style="{DynamicResource MaterialDesignHeadline6TextBlock}" Text="{Binding Count}" VerticalAlignment="Center"
+                                                   Visibility="{Binding RemoveBtnVisibility}"/>
                                         <Button Style="{DynamicResource MaterialDesignIconButton}" 
-                                                Content="{material:PackIcon Kind={Binding Icon}}" 
-                                                ToolTip="Добавить в корзину"/>
+                                                Content="{material:PackIcon Kind=PlusCircle}" 
+                                                ToolTip="Добавить в корзину" Click="AddToBasketBtnClick"
+                                                Tag="{Binding Id}"/>
                                     </StackPanel>
                                 </StackPanel>
                             </Grid>

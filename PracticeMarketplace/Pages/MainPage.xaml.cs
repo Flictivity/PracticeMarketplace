@@ -1,4 +1,5 @@
 ﻿using Microsoft.Win32;
+using PracticeMarketplace.ADO;
 using System.IO;
 using System.Linq;
 using System.Windows;
@@ -32,6 +33,42 @@ namespace PracticeMarketplace.Pages
             var product = App.Connection.Product.FirstOrDefault(x => x.Id == 1);
             product.Image = byteArray;
             App.Connection.SaveChangesAsync();
+        }
+
+        private void RemoveFromBasketBtnClick(object sender, RoutedEventArgs e)
+        {
+            var productId = (int)((Button)sender).Tag;
+            var basketProduct = App.CurrentUser.Basket.FirstOrDefault(x => x.Product_Id == productId);
+            if (basketProduct != null && basketProduct.Count > 0)
+            {
+                basketProduct.Count--;
+            }
+            if(basketProduct.Count == 0)
+            {
+                App.Connection.Basket.Remove(basketProduct);
+            }
+            App.Connection.SaveChanges();
+            lvProducts.ItemsSource = App.Connection.Product.ToList();
+        }
+
+        private void AddToBasketBtnClick(object sender, RoutedEventArgs e)
+        {
+            var productId = (int)((Button)sender).Tag;
+            var basketProduct = App.CurrentUser.Basket.FirstOrDefault(x => x.Product_Id == productId);
+            if (basketProduct != null)
+            {
+                basketProduct.Count++;
+            }
+            else
+            {
+                App.CurrentUser.Basket.Add(new Basket()
+                {
+                    Product_Id = productId,
+                    Count = 1
+                });
+            }
+            App.Connection.SaveChanges();
+            lvProducts.ItemsSource = App.Connection.Product.ToList();
         }
     }
 }

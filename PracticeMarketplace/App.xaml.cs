@@ -1,5 +1,8 @@
 ﻿using PracticeMarketplace.ADO;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
+using System.Windows.Documents;
 
 namespace PracticeMarketplace
 {
@@ -9,6 +12,6 @@ namespace PracticeMarketplace
     public partial class App : Application
     {
         public static PracticeMarketplaceEntities Connection = new PracticeMarketplaceEntities();
-        public static User CurrentUser;
+        public static User CurrentUser = Connection.User.FirstOrDefault(x => x.Id==1);
     }
 }
