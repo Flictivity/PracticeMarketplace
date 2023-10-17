@@ -1,7 +1,10 @@
-﻿using PracticeMarketplace.ADO;
+﻿using Microsoft.Win32;
+using PracticeMarketplace.ADO;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,10 +38,82 @@ namespace PracticeMarketplace.Pages
             {
                 product = dbProduct;
                 isEdit = true;
-                cbCountries.SelectedItem = product.Country;
-                cbCategories.SelectedItem = product.ProductCategory;
             }
             DataContext = product;
+        }
+
+        private void AddImageBtnClick(object sender, RoutedEventArgs e)
+        {
+            var window = new OpenFileDialog
+            {
+                Filter = "Image files (*.png;*.jpg)|*.png;*.jpg"
+            };
+
+            if (window.ShowDialog() != true)
+            {
+                MessageBox.Show($"не выбрано изоражение!",
+        "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            var byteArray = File.ReadAllBytes(window.FileName);
+            product.Image = byteArray;
+            BindingOperations.GetBindingExpressionBase(imgPhoto, Image.SourceProperty).UpdateTarget();
+            App.Connection.SaveChangesAsync();
+        }
+
+        private void SaveBtnClick(object sender, RoutedEventArgs e)
+        {
+            snackbar.Background = Brushes.Red;
+            if (product.Cost <= 0)
+            {
+                snackbar.MessageQueue.Enqueue("Стоимость товара должны быть больше 0");
+                return;
+            }
+            if(string.IsNullOrWhiteSpace(product.Name))
+            {
+                snackbar.MessageQueue.Enqueue("Заполните наименование товара");
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(product.ArticleNumber))
+            {
+                snackbar.MessageQueue.Enqueue("Заполните артикул товара");
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(product.Description))
+            {
+                snackbar.MessageQueue.Enqueue("Заполните описание товара");
+                return;
+            }
+            if(product.Country == null)
+            {
+                snackbar.MessageQueue.Enqueue("Необходимо выбрать страну товара");
+                return;
+            }
+            if (product.ProductCategory == null)
+            {
+                snackbar.MessageQueue.Enqueue("Необходимо выбрать категорию товара");
+                return;
+            }
+
+            try
+            {
+                App.Connection.Product.AddOrUpdate(product);
+                App.Connection.SaveChanges();
+                if(isEdit)
+                {
+                    MessageBox.Show($"Товар успешно изменен", "Сообщение", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                else
+                {
+                    MessageBox.Show($"Товар успешно добавлен", "Сообщение", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                NavigationService.Navigate(new MainPage());
+            }
+            catch
+            {
+                MessageBox.Show("При сохранении товара произошла ошибка", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

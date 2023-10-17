@@ -32,25 +32,6 @@ namespace PracticeMarketplace.Pages
             UpdateData();
         }
 
-        private void AddImageBtnClick(object sender, RoutedEventArgs e)
-        {
-            var window = new OpenFileDialog
-            {
-                Filter = "Image files (*.png;*.jpg)|*.png;*.jpg"
-            };
-
-            if (window.ShowDialog() != true)
-            {
-                MessageBox.Show($"не выбрано изоражение!",
-        "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-
-            var byteArray = File.ReadAllBytes(window.FileName);
-            var product = App.Connection.Product.FirstOrDefault(x => x.Id == 6);
-            product.Image = byteArray;
-            App.Connection.SaveChangesAsync();
-        }
-
         private void RemoveFromBasketBtnClick(object sender, RoutedEventArgs e)
         {
             var productId = (int)((Button)sender).Tag;
@@ -253,6 +234,11 @@ namespace PracticeMarketplace.Pages
         private void ProductBtnClick(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new ProductPage((int)((Button)sender).Tag));
+        }
+
+        private void CreateProductBtnClick(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new ProductPage(0));
         }
     }
 }
