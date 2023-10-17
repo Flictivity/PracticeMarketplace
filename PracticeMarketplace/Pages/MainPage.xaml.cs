@@ -46,7 +46,7 @@ namespace PracticeMarketplace.Pages
             }
 
             var byteArray = File.ReadAllBytes(window.FileName);
-            var product = App.Connection.Product.FirstOrDefault(x => x.Id == 1);
+            var product = App.Connection.Product.FirstOrDefault(x => x.Id == 6);
             product.Image = byteArray;
             App.Connection.SaveChangesAsync();
         }

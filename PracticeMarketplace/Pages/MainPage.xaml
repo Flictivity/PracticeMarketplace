@@ -105,7 +105,7 @@
                     </ListBox.ItemsPanel>
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <material:Card>
+                            <material:Card Width="250">
                                 <Grid Margin="10">
                                     <StackPanel>
                                         <Image Source="{Binding Image}"
@@ -113,12 +113,12 @@
                                            Height="200" />
                                         <TextBlock HorizontalAlignment="Left"
                                                Style="{DynamicResource MaterialDesignHeadline5TextBlock}"
-                                               Text="{Binding Name}" />
+                                               Text="{Binding ShortName}" TextWrapping="WrapWithOverflow" Foreground="DarkBlue"/>
                                         <StackPanel Orientation="Horizontal">
                                             <TextBlock HorizontalAlignment="Left"
                                                    Style="{DynamicResource MaterialDesignHeadline6TextBlock}"
                                                    FontWeight="Bold"
-                                                   Text="Цена:" />
+                                                   Text="Цена:" TextWrapping="Wrap"/>
                                             <TextBlock HorizontalAlignment="Left"
                                                    Style="{DynamicResource MaterialDesignHeadline6TextBlock}"
                                                    Text="{Binding Cost}"

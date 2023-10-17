@@ -1,6 +1,5 @@
 ﻿using System.Linq;
 using System.Windows;
-using MaterialDesignThemes.Wpf;
 
 namespace PracticeMarketplace.ADO
 {
@@ -15,12 +14,14 @@ namespace PracticeMarketplace.ADO
             get
             {
                 var productInBucket = App.Connection.Basket.FirstOrDefault(x => x.Product_Id == this.Id);
-                if(productInBucket != null)
+                if (productInBucket != null)
                 {
                     return (int)productInBucket.Count;
                 }
                 return 0;
             }
         }
+
+        public string ShortName => this.Name.Length > 15 ? $"{this.Name.Substring(0, 15)}..." : this.Name;
     }
 }
