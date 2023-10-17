@@ -24,6 +24,7 @@ namespace PracticeMarketplace.ADO
         public int User_Id { get; set; }
         public int Status_Id { get; set; }
         public int PointOfDelivery_Id { get; set; }
+        public System.DateTime CreationDate { get; set; }
     
         public virtual OrderStatus OrderStatus { get; set; }
         public virtual PointOfDelivery PointOfDelivery { get; set; }

@@ -18,5 +18,10 @@ namespace PracticeMarketplace
         {
             Frame.Navigate(new MainPage());
         }
+
+        private void BasketNavigate(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(new BasketPage());
+        }
     }
 }

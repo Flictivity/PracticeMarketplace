@@ -29,6 +29,7 @@
           <Property Name="User_Id" Type="int" Nullable="false" />
           <Property Name="Status_Id" Type="int" Nullable="false" />
           <Property Name="PointOfDelivery_Id" Type="int" Nullable="false" />
+          <Property Name="CreationDate" Type="date" Nullable="false" />
         </EntityType>
         <EntityType Name="OrderItem">
           <Key>
@@ -346,6 +347,7 @@
           <Property Name="User_Id" Type="Int32" Nullable="false" />
           <Property Name="Status_Id" Type="Int32" Nullable="false" />
           <Property Name="PointOfDelivery_Id" Type="Int32" Nullable="false" />
+          <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="0" />
           <NavigationProperty Name="OrderStatus" Relationship="PracticeMarketPlaceModel.FK_Order_OrderStatus" FromRole="Order" ToRole="OrderStatus" />
           <NavigationProperty Name="PointOfDelivery" Relationship="PracticeMarketPlaceModel.FK_Order_PointOfDelivery" FromRole="Order" ToRole="PointOfDelivery" />
           <NavigationProperty Name="User" Relationship="PracticeMarketPlaceModel.FK_Order_User" FromRole="Order" ToRole="User" />
@@ -572,6 +574,7 @@
           <EntitySetMapping Name="Order">
             <EntityTypeMapping TypeName="PracticeMarketPlaceModel.Order">
               <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
                 <ScalarProperty Name="PointOfDelivery_Id" ColumnName="PointOfDelivery_Id" />
                 <ScalarProperty Name="Status_Id" ColumnName="Status_Id" />
                 <ScalarProperty Name="User_Id" ColumnName="User_Id" />

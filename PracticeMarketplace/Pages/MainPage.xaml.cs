@@ -45,7 +45,7 @@ namespace PracticeMarketplace.Pages
                 App.Connection.Basket.Remove(basketProduct);
             }
             App.Connection.SaveChanges();
-            lvProducts.ItemsSource = App.Connection.Product.ToList();
+            UpdateData() ;
         }
 
         private void AddToBasketBtnClick(object sender, RoutedEventArgs e)
@@ -70,7 +70,7 @@ namespace PracticeMarketplace.Pages
                 });
             }
             App.Connection.SaveChanges();
-            lvProducts.ItemsSource = App.Connection.Product.ToList();
+            UpdateData();
         }
 
         private void FillFilterData()

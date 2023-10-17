@@ -18,14 +18,15 @@
                     Margin="15,0,5,0">
                             <Image Source="/Images/logo.png" Width="190" Height="180"/>
                             <Button material:ButtonAssist.CornerRadius="10"
-                    FontSize="24" 
-                    Height="50"
-                    Margin="0,0,0,30" 
-                    Click="MainPageNavigate">Главная</Button>
+                                    FontSize="24" 
+                                    Height="50"
+                                    Margin="0,0,0,30" 
+                                    Click="MainPageNavigate">Главная</Button>
                             <Button material:ButtonAssist.CornerRadius="10" 
-                    FontSize="24" 
-                    Height="50" 
-                    Margin="0,0,0,30">Корзина</Button>
+                                    FontSize="24" 
+                                    Height="50" 
+                                    Margin="0,0,0,30"
+                                    Click="BasketNavigate">Корзина</Button>
                             <Button material:ButtonAssist.CornerRadius="10" 
                     FontSize="24" 
                     Height="50" 
