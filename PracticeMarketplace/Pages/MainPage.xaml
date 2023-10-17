@@ -24,79 +24,86 @@
                 Grid.Column="1"
                 Content="Выбрать изображение"
                 Click="AddImageBtnClick" />
+        <material:Snackbar MessageQueue="{material:MessageQueue}" Grid.Row="0" Grid.Column="1" x:Name="snackbar" HorizontalAlignment="Stretch"/>
+
         <Grid Grid.Column="1" Grid.Row="1">
             <StackPanel>
-                <StackPanel Grid.Column="1" Grid.Row="0"
-                            Orientation="Vertical"
-                            Margin="24 16 24 16"
-                            TextBlock.Foreground="{DynamicResource MaterialDesignBody}">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"></RowDefinition>
-                            <RowDefinition Height="*"></RowDefinition>
-                        </Grid.RowDefinitions>
+                <Expander>
+                    <Expander.Header>
+                        <TextBlock Style="{DynamicResource MaterialDesignHeadline5TextBlock}" Text="Фильтры"/>
+                    </Expander.Header>
+                    <StackPanel Grid.Column="1" Grid.Row="0"
+                                Orientation="Vertical"
+                                Margin="24 16 24 16"
+                                TextBlock.Foreground="{DynamicResource MaterialDesignBody}">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                            </Grid.RowDefinitions>
 
-                        <Grid Grid.Row="0" Margin="0 0 0 5">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="2*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <TextBox Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                                 x:Name="tbSearch" Grid.Column="0"
-                                 TextChanged="tbSearch_TextChanged" FontSize="16" Margin="0 0 5 0"
-                                 VerticalAlignment="Center"
-                                 material:HintAssist.Hint="Поиск">
-                            </TextBox>
-                            <Button Grid.Column="1" Margin="5 0 0 0" Height="50" Width="200" HorizontalAlignment="Left" Click="ApplyCostFilter">Применить</Button>
-                        </Grid>
-                        <Grid Grid.Row="1">
-                            <StackPanel Orientation="Horizontal" Grid.Column="0">
-                                <ComboBox x:Name="cbCategories" Style="{StaticResource MaterialDesignOutlinedComboBox}"
-                                  FontSize="16" HorizontalAlignment="Left"
-                                  VerticalAlignment="Center" Grid.Row="1" Margin="0 0 5 0" Width="200"
-                                  material:HintAssist.Hint="Категория"
-                                  SelectionChanged="CbCategories_OnSelectionChanged">
-                                    <ComboBox.ItemTemplate>
-                                        <DataTemplate>
-                                            <TextBlock Text="{Binding Name}"></TextBlock>
-                                        </DataTemplate>
-                                    </ComboBox.ItemTemplate>
-                                </ComboBox>
-                                <ComboBox x:Name="cbCountries" Style="{StaticResource MaterialDesignOutlinedComboBox}"
-                                  FontSize="16" HorizontalAlignment="Left"
-                                  VerticalAlignment="Center" Grid.Row="1" Margin="5" Width="200"
-                                  material:HintAssist.Hint="Страна-изготовитель"
-                                  SelectionChanged="CbCountries_OnSelectionChanged">
-                                    <ComboBox.ItemTemplate>
-                                        <DataTemplate>
-                                            <TextBlock Text="{Binding Name}"></TextBlock>
-                                        </DataTemplate>
-                                    </ComboBox.ItemTemplate>
-                                </ComboBox>
-                                <ComboBox Style="{StaticResource MaterialDesignOutlinedComboBox}" x:Name="cbSortByCost"
-                                      SelectionChanged="SortByCost" FontSize="16" HorizontalAlignment="Left"
-                                      Grid.Column="1"
-                                      Margin="5 5 5 5" Width="200" material:HintAssist.Hint="Сортировка">
-                                </ComboBox>
-                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="10 0 0 0">
-                                    <TextBlock FontSize="16" VerticalAlignment="Center" Text="Цена:"></TextBlock>
-                                    <TextBlock FontSize="16" VerticalAlignment="Center" Text="от:" Margin="10 0 0 0"></TextBlock>
-                                    <TextBox Style="{StaticResource MaterialDesignOutlinedTextBox}" FontSize="16"
-                                     Text="{Binding CostMin}"
-                                     VerticalAlignment="Center" Margin="5" Width="80"
-                                     TextChanged="CostMinTextChanged">
-                                    </TextBox>
-                                    <TextBlock FontSize="16" VerticalAlignment="Center" Text="до:" Margin="10 0 0 0"></TextBlock>
-                                    <TextBox Style="{StaticResource MaterialDesignOutlinedTextBox}" FontSize="16"
-                                     Text="{Binding CostMax}" TextChanged="CostMaxTextChanged"
-                                     VerticalAlignment="Center" Margin="5" Width="80">
-                                    </TextBox>
+                            <Grid Grid.Row="0" Margin="0 0 0 5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBox Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                                         x:Name="tbSearch" Grid.Column="0"
+                                         TextChanged="tbSearch_TextChanged" FontSize="16" Margin="0 0 5 0"
+                                         VerticalAlignment="Center"
+                                         material:HintAssist.Hint="Поиск">
+                                </TextBox>
+                                <Button Grid.Column="1" Margin="5 0 0 0" Height="50" Width="200" HorizontalAlignment="Left" Click="ApplyCostFilter">Применить</Button>
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <StackPanel Orientation="Horizontal" Grid.Column="0">
+                                    <ComboBox x:Name="cbCategories" Style="{StaticResource MaterialDesignOutlinedComboBox}"
+                                              FontSize="16" HorizontalAlignment="Left"
+                                              VerticalAlignment="Center" Grid.Row="1" Margin="0 0 5 0" Width="200"
+                                              material:HintAssist.Hint="Категория"
+                                              SelectionChanged="CbCategories_OnSelectionChanged">
+                                        <ComboBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding Name}"></TextBlock>
+                                            </DataTemplate>
+                                        </ComboBox.ItemTemplate>
+                                    </ComboBox>
+                                    <ComboBox x:Name="cbCountries" Style="{StaticResource MaterialDesignOutlinedComboBox}"
+                                              FontSize="16" HorizontalAlignment="Left"
+                                              VerticalAlignment="Center" Grid.Row="1" Margin="5" Width="200"
+                                              material:HintAssist.Hint="Страна-изготовитель"
+                                              SelectionChanged="CbCountries_OnSelectionChanged">
+                                        <ComboBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding Name}"></TextBlock>
+                                            </DataTemplate>
+                                        </ComboBox.ItemTemplate>
+                                    </ComboBox>
+                                    <ComboBox Style="{StaticResource MaterialDesignOutlinedComboBox}" x:Name="cbSortByCost"
+                                              SelectionChanged="SortByCost" FontSize="16" HorizontalAlignment="Left"
+                                              Grid.Column="1"
+                                              Margin="5 5 5 5" Width="200" material:HintAssist.Hint="Сортировка">
+                                    </ComboBox>
+                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="10 0 0 0">
+                                        <TextBlock FontSize="16" VerticalAlignment="Center" Text="Цена:"></TextBlock>
+                                        <TextBlock FontSize="16" VerticalAlignment="Center" Text="от:" Margin="10 0 0 0"></TextBlock>
+                                        <TextBox Style="{StaticResource MaterialDesignOutlinedTextBox}" FontSize="16"
+                                                 Text="{Binding CostMin}"
+                                                 VerticalAlignment="Center" Margin="5" Width="80"
+                                                 TextChanged="CostMinTextChanged">
+                                        </TextBox>
+                                        <TextBlock FontSize="16" VerticalAlignment="Center" Text="до:" Margin="10 0 0 0"></TextBlock>
+                                        <TextBox Style="{StaticResource MaterialDesignOutlinedTextBox}" FontSize="16"
+                                                 Text="{Binding CostMax}" TextChanged="CostMaxTextChanged"
+                                                 VerticalAlignment="Center" Margin="5" Width="80">
+                                        </TextBox>
+                                    </StackPanel>
                                 </StackPanel>
-                            </StackPanel>
+                            </Grid>
                         </Grid>
-                    </Grid>
-                </StackPanel>
-                <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="20 5 20 5" d:ItemsSource="{d:SampleData ItemCount=15}"
+                    </StackPanel>
+                </Expander>
+                <ListView Height="550" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="20 5 20 5" d:ItemsSource="{d:SampleData ItemCount=15}"
                       x:Name="lvProducts">
                     <ListBox.ItemsPanel>
                         <ItemsPanelTemplate>
@@ -114,17 +121,23 @@
                                         <TextBlock HorizontalAlignment="Left"
                                                Style="{DynamicResource MaterialDesignHeadline5TextBlock}"
                                                Text="{Binding ShortName}" TextWrapping="WrapWithOverflow" Foreground="DarkBlue"/>
-                                        <StackPanel Orientation="Horizontal">
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
                                             <TextBlock HorizontalAlignment="Left"
                                                    Style="{DynamicResource MaterialDesignHeadline6TextBlock}"
                                                    FontWeight="Bold"
-                                                   Text="Цена:" TextWrapping="Wrap"/>
+                                                   Text="Цена:" TextWrapping="Wrap" VerticalAlignment="Center"/>
                                             <TextBlock HorizontalAlignment="Left"
                                                    Style="{DynamicResource MaterialDesignHeadline6TextBlock}"
                                                    Text="{Binding Cost}"
-                                                   Margin="5 0 0 0" />
+                                                   Margin="5 0 0 0"  VerticalAlignment="Center"/>
                                         </StackPanel>
-                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                        <Button Margin="0 5 0 5"
+                                                Content="{Binding ProductBtnContent}"
+                                                ToolTip="{Binding ProductBtnContent}" 
+                                                HorizontalAlignment="Stretch" 
+                                                Click="ProductBtnClick" 
+                                                Tag="{Binding Id}"/>
+                                        <StackPanel Visibility="{Binding ManagerButtonsVisibility}" Orientation="Horizontal" HorizontalAlignment="Center">
                                             <Button Style="{DynamicResource MaterialDesignIconButton}"
                                                 Content="{material:PackIcon Kind=MinusCircle}"
                                                 Visibility="{Binding RemoveBtnVisibility}"

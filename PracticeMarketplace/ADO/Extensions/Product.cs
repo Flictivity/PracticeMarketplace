@@ -9,6 +9,10 @@ namespace PracticeMarketplace.ADO
             ? Visibility.Visible
             : Visibility.Collapsed;
 
+        public Visibility ManagerButtonsVisibility => App.CurrentUser.Role_Id == 1 ? Visibility.Collapsed : Visibility.Visible;
+        public Visibility ManagerProductButtonsVisibility => App.CurrentUser.Role_Id == 1 ? Visibility.Visible : Visibility.Collapsed;
+        public string ProductBtnContent => App.CurrentUser.Role_Id == 1 ? "Изменить" : "Подробнее";
+
         public int Count
         {
             get
@@ -23,5 +27,7 @@ namespace PracticeMarketplace.ADO
         }
 
         public string ShortName => this.Name.Length > 15 ? $"{this.Name.Substring(0, 15)}..." : this.Name;
+
+        public bool IsProductReadonly => App.CurrentUser.Role_Id == 2;
     }
 }

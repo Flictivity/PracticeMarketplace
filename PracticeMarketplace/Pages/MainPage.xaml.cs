@@ -69,6 +69,11 @@ namespace PracticeMarketplace.Pages
 
         private void AddToBasketBtnClick(object sender, RoutedEventArgs e)
         {
+            if(App.CurrentUser is null || App.CurrentUser.Role_Id != 2)
+            {
+                snackbar.MessageQueue.Enqueue("Для добавления товара в корзину необходимо авторизоваться");
+                return;
+            }
             var productId = (int)((Button)sender).Tag;
             var basketProduct = App.CurrentUser.Basket.FirstOrDefault(x => x.Product_Id == productId);
             if (basketProduct != null)
@@ -243,6 +248,11 @@ namespace PracticeMarketplace.Pages
             CostFilter();
 
             UpdateData();
+        }
+
+        private void ProductBtnClick(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new ProductPage((int)((Button)sender).Tag));
         }
     }
 }
