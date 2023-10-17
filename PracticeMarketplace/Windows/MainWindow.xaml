@@ -10,14 +10,13 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
-            <ColumnDefinition Width="3*"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="5*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
         <StackPanel Grid.Row="1"
                     VerticalAlignment="Center"
-                    Margin="17,0,17,0">
-                            <Image Source="/Images/logo.png" Width="200" Height="200"/>
+                    Margin="15,0,5,0">
+                            <Image Source="/Images/logo.png" Width="190" Height="180"/>
                             <Button material:ButtonAssist.CornerRadius="10"
                     FontSize="24" 
                     Height="50"
