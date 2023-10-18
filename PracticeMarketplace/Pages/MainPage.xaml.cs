@@ -30,7 +30,7 @@ namespace PracticeMarketplace.Pages
             InitializeComponent();
             FillFilterData();
             UpdateData();
-            btnAdd.Visibility = App.CurrentUser.Role_Id == 1 ? Visibility.Visible : Visibility.Collapsed;
+            btnAdd.Visibility = App.CurrentUser != null && App.CurrentUser.Role_Id == 1 ? Visibility.Visible : Visibility.Collapsed;
         }
 
         private void RemoveFromBasketBtnClick(object sender, RoutedEventArgs e)

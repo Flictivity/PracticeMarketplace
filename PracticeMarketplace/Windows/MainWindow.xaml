@@ -26,15 +26,15 @@
                                 FontSize="24" 
                                 Height="50" 
                                 Margin="0,0,0,30"
-                                Click="BasketNavigate">Корзина</Button>
+                                Click="BasketNavigate" x:Name="btnBasket">Корзина</Button>
             <Button material:ButtonAssist.CornerRadius="10" 
                             FontSize="24" 
                             Height="50" 
-                            Margin="0,0,0,30" Click="OrdersNavigate">Заказы</Button>
+                            Margin="0,0,0,30" Click="OrdersNavigate" x:Name="btnOrders">Заказы</Button>
             <Button material:ButtonAssist.CornerRadius="10" 
                             FontSize="24" 
                             Height="50" 
-                            Margin="0,0,0,30">Профиль</Button>
+                            Margin="0,0,0,30" x:Name="btnProfile" Click="ProfileNavigate"></Button>
         </StackPanel>
         <Frame x:Name="Frame" 
                 Grid.Column="1" 

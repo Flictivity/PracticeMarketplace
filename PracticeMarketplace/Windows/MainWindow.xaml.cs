@@ -12,6 +12,7 @@ namespace PracticeMarketplace
         {
             InitializeComponent();
             Frame.Navigate(new MainPage());
+            UpdateVisual();
         }
 
         private void MainPageNavigate(object sender, RoutedEventArgs e)
@@ -27,6 +28,41 @@ namespace PracticeMarketplace
         private void OrdersNavigate(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(new OrdersPage());
+        }
+
+        private void ProfileNavigate(object sender, RoutedEventArgs e)
+        {
+            if (App.CurrentUser == null)
+            {
+                var authPage = new AuthorizationPage();
+                authPage.OnAuthorization += UpdateVisual;
+                Frame.Navigate(authPage);
+            }
+            else
+            {
+                Frame.Navigate(new ProfilePage());
+            }
+        }
+
+        private void UpdateVisual()
+        {
+            if (App.CurrentUser == null)
+            {
+                btnProfile.Content = "Войти";
+                btnOrders.Visibility = Visibility.Collapsed;
+                btnBasket.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                btnProfile.Content = "Профиль";
+                btnOrders.Visibility = Visibility.Visible;
+                btnBasket.Visibility = Visibility.Visible;
+            }
+
+            if (App.CurrentUser != null && App.CurrentUser.Role_Id == 1)
+            {
+                btnBasket.Visibility = Visibility.Collapsed;
+            }
         }
     }
 }

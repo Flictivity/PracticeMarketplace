@@ -9,9 +9,9 @@ namespace PracticeMarketplace.ADO
             ? Visibility.Visible
             : Visibility.Collapsed;
 
-        public Visibility ManagerButtonsVisibility => App.CurrentUser.Role_Id == 1 ? Visibility.Collapsed : Visibility.Visible;
+        public Visibility ManagerButtonsVisibility => App.CurrentUser != null && App.CurrentUser.Role_Id == 1 ? Visibility.Collapsed : Visibility.Visible;
         public Visibility ManagerProductButtonsVisibility => App.CurrentUser.Role_Id == 1 ? Visibility.Visible : Visibility.Collapsed;
-        public string ProductBtnContent => App.CurrentUser.Role_Id == 1 ? "Изменить" : "Подробнее";
+        public string ProductBtnContent => App.CurrentUser != null && App.CurrentUser.Role_Id == 1 ? "Изменить" : "Подробнее";
 
         public int Count
         {

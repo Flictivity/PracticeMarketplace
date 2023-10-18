@@ -76,7 +76,7 @@
                             AcceptsReturn="True"
                             IsReadOnly="{Binding IsProductReadonly}"
                             Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                            TextWrapping="Wrap"
+                            TextWrapping="Wrap" x:Name="tbArticle"
                             VerticalScrollBarVisibility="Auto" />
                 </StackPanel>
                 <StackPanel Grid.Column="1">
@@ -89,6 +89,7 @@
                             Style="{StaticResource MaterialDesignOutlinedTextBox}"
                             TextWrapping="Wrap"
                             FontSize="16"
+                            x:Name="tbCost"
                             VerticalScrollBarVisibility="Auto"
                             Text="{Binding Cost}"/>
                     <ComboBox x:Name="cbCountries" Style="{StaticResource MaterialDesignOutlinedComboBox}"

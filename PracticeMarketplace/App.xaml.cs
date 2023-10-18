@@ -12,6 +12,6 @@ namespace PracticeMarketplace
     public partial class App : Application
     {
         public static PracticeMarketplaceEntities Connection = new PracticeMarketplaceEntities();
-        public static User CurrentUser = Connection.User.FirstOrDefault(x => x.Id==1);
+        public static User CurrentUser ;
     }
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.Win32;
+﻿using MaterialDesignThemes.Wpf;
+using Microsoft.Win32;
 using PracticeMarketplace.ADO;
 using System;
 using System.Collections.Generic;
@@ -93,6 +94,22 @@ namespace PracticeMarketplace.Pages
             if (product.ProductCategory == null)
             {
                 snackbar.MessageQueue.Enqueue("Необходимо выбрать категорию товара");
+                return;
+            }
+            if(product.Image == null) {
+                snackbar.MessageQueue.Enqueue("Необходимо выбрать изображение товара");
+                return;
+            }
+
+            if(!decimal.TryParse(tbCost.Text.Replace('.',','), out decimal dec))
+            {
+                snackbar.MessageQueue.Enqueue("Неверная стоимость товара!");
+                return;
+            }
+
+            if (!int.TryParse(tbArticle.Text, out int article))
+            {
+                snackbar.MessageQueue.Enqueue("Введите корректный артикул!");
                 return;
             }
 

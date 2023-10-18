@@ -59,11 +59,11 @@ namespace PracticeMarketplace.Pages
 
             if (App.CurrentUser.Role.Id == 1)
             {
-                SourceData = App.Connection.Order.ToList().Where(x => _statusFilterQuery(x)).ToList();
+                SourceData = App.Connection.Order.ToList().Where(x => _statusFilterQuery(x)).OrderByDescending(x => x.CreationDate).ToList();
             }
             else
             {
-                SourceData = App.CurrentUser.Order.Where(x => _statusFilterQuery(x)).ToList();
+                SourceData = App.CurrentUser.Order.Where(x => _statusFilterQuery(x)).OrderByDescending(x => x.CreationDate).ToList();
             }
 
             lvOrders.ItemsSource = SourceData;

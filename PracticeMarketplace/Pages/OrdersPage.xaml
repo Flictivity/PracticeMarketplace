@@ -79,7 +79,7 @@
                                                Text="Дата заказа:" TextWrapping="Wrap" VerticalAlignment="Center"/>
                                             <TextBlock HorizontalAlignment="Left"
                                                Style="{DynamicResource MaterialDesignHeadline6TextBlock}"
-                                               Text="{Binding CreationDate}"
+                                               Text="{Binding CreatedDateString}"
                                                Margin="5 0 0 0"  VerticalAlignment="Center"/>
                                         </StackPanel>
                                         <StackPanel Orientation="Horizontal">
