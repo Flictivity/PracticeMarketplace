@@ -23,8 +23,8 @@
         <material:Snackbar MessageQueue="{material:MessageQueue}" Grid.Row="0" Grid.Column="1" x:Name="snackbar" HorizontalAlignment="Stretch"/>
         <Button x:Name="btnAdd" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Right" Content="Добавить товар" Click="CreateProductBtnClick"/>
         <Grid Grid.Column="1" Grid.Row="1">
-            <StackPanel>
-                <Expander>
+            <DockPanel LastChildFill="True"  >
+                <Expander DockPanel.Dock="Top">
                     <Expander.Header>
                         <TextBlock Style="{DynamicResource MaterialDesignHeadline5TextBlock}" Text="Фильтры"/>
                     </Expander.Header>
@@ -99,7 +99,7 @@
                         </Grid>
                     </StackPanel>
                 </Expander>
-                <ListView Height="550" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="20 5 20 5" d:ItemsSource="{d:SampleData ItemCount=15}"
+                <ListView ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="20 5 20 5" d:ItemsSource="{d:SampleData ItemCount=15}"
                       x:Name="lvProducts">
                     <ListBox.ItemsPanel>
                         <ItemsPanelTemplate>
@@ -154,7 +154,7 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-            </StackPanel>
+            </DockPanel>
         </Grid>
     </Grid>
 </Page>

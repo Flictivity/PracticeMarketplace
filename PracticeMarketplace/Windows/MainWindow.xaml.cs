@@ -40,7 +40,9 @@ namespace PracticeMarketplace
             }
             else
             {
-                Frame.Navigate(new ProfilePage());
+                var profilePage = new ProfilePage();
+                profilePage.OnExit += UpdateVisual;
+                Frame.Navigate(profilePage);
             }
         }
 

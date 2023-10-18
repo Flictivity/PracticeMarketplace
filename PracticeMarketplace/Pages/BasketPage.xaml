@@ -51,7 +51,7 @@
                                 <ColumnDefinition Width="1*"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
 
-                            <Image Source="{Binding Product.Image}" Margin="5" Width="100" Height="100"></Image>
+                            <Image Source="{Binding Product.Image}" Margin="5" Width="200" Height="200"></Image>
 
                             <StackPanel Grid.Column="1">
                                 <TextBlock Text="{Binding Product.ShortName}" Margin="5" FontSize="18" Foreground="{StaticResource PrimaryHueMidBrush}"></TextBlock>
