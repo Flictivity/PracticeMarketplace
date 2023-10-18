@@ -88,7 +88,7 @@ namespace PracticeMarketplace.Pages
                 Snackbar.MessageQueue?.Enqueue($"Заказ оформлен. Номер заказа - {newOrder.Id}. " +
                                                 $"Ожидаемая дата доставки - {deliveryDate.Date.ToString("d")} по адресу: {newOrder.PointOfDelivery.Address}",
                                                 null, null, null,
-                                                false, true, TimeSpan.FromSeconds(3));
+                                                false, true, TimeSpan.FromSeconds(5));
             }
             catch
             {
