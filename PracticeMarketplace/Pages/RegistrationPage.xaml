@@ -26,7 +26,7 @@
             <TextBox Style="{StaticResource MaterialDesignOutlinedTextBox}" x:Name="tbName" FontSize="15" Margin="5" VerticalAlignment="Center" materialDesign:HintAssist.Hint="Имя"></TextBox>
             <TextBox Style="{StaticResource MaterialDesignOutlinedTextBox}" x:Name="tbSurname" FontSize="15" Margin="5" VerticalAlignment="Center" materialDesign:HintAssist.Hint="Фамилия"></TextBox>
             <TextBox Style="{StaticResource MaterialDesignOutlinedTextBox}" x:Name="tbLogin" FontSize="15" Margin="5" VerticalAlignment="Center" materialDesign:HintAssist.Hint="Логин"></TextBox>
-            <PasswordBox x:Name="tbPassword" Style="{DynamicResource MaterialDesignOutlinedPasswordBox}" FontSize="15" Margin="5" VerticalAlignment="Center" materialDesign:HintAssist.Hint="Пароль"></PasswordBox>
+            <PasswordBox x:Name="pbPassword" Style="{DynamicResource MaterialDesignOutlinedPasswordBox}" FontSize="15" Margin="5" VerticalAlignment="Center" materialDesign:HintAssist.Hint="Пароль"></PasswordBox>
             <Button Grid.Row="5" Click="RegisterBtnClick" Content="Зарегистрироваться" Height="40" Margin="5"></Button>
             <TextBlock Grid.Row="6" FontSize="16" HorizontalAlignment="Center"><Hyperlink NavigateUri="AuthPage.xaml">Уже есть аккаунт?</Hyperlink></TextBlock>
         </StackPanel>

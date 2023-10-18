@@ -32,7 +32,7 @@ namespace PracticeMarketplace.Pages
         {
             try
             {
-                if (string.IsNullOrEmpty(tbLogin.Text) || string.IsNullOrEmpty(tbPassword.Password))
+                if (string.IsNullOrEmpty(tbLogin.Text) || string.IsNullOrEmpty(pbPassword.Password))
                 {
                     snackbar.MessageQueue?.Enqueue("Необходимо заполнить все поля");
                     return;
@@ -45,7 +45,7 @@ namespace PracticeMarketplace.Pages
                     snackbar.MessageQueue?.Enqueue("Пользователь не найден!");
                     return;
                 }
-                if(user.Password != tbPassword.Password)
+                if(user.Password != pbPassword.Password)
                 {
                     snackbar.MessageQueue?.Enqueue("Неверный пароль");
                     return;
