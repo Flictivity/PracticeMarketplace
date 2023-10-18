@@ -7,14 +7,14 @@
       <Diagram DiagramId="a154095c055146359c22b1e2bd297c78" Name="Diagram1">
         <EntityTypeShape EntityType="PracticeMarketPlaceModel.Basket" Width="1.5" PointX="5.25" PointY="3.75" />
         <EntityTypeShape EntityType="PracticeMarketPlaceModel.Country" Width="1.5" PointX="0.75" PointY="4" />
-        <EntityTypeShape EntityType="PracticeMarketPlaceModel.Order" Width="1.5" PointX="3" PointY="9.625" />
+        <EntityTypeShape EntityType="PracticeMarketPlaceModel.Order" Width="1.5" PointX="3" PointY="10.625" />
         <EntityTypeShape EntityType="PracticeMarketPlaceModel.OrderItem" Width="1.5" PointX="5.25" PointY="0.75" />
-        <EntityTypeShape EntityType="PracticeMarketPlaceModel.OrderStatus" Width="1.5" PointX="0.75" PointY="17.125" />
-        <EntityTypeShape EntityType="PracticeMarketPlaceModel.PointOfDelivery" Width="1.5" PointX="0.75" PointY="10.875" />
+        <EntityTypeShape EntityType="PracticeMarketPlaceModel.OrderStatus" Width="1.5" PointX="0.75" PointY="11.875" />
+        <EntityTypeShape EntityType="PracticeMarketPlaceModel.PointOfDelivery" Width="1.5" PointX="0.75" PointY="18.125" />
         <EntityTypeShape EntityType="PracticeMarketPlaceModel.Product" Width="1.5" PointX="3" PointY="3.125" />
         <EntityTypeShape EntityType="PracticeMarketPlaceModel.ProductCategory" Width="1.5" PointX="0.75" PointY="1" />
-        <EntityTypeShape EntityType="PracticeMarketPlaceModel.Role" Width="1.5" PointX="1.5" PointY="13.875" />
-        <EntityTypeShape EntityType="PracticeMarketPlaceModel.User" Width="1.5" PointX="0.75" PointY="7.375" />
+        <EntityTypeShape EntityType="PracticeMarketPlaceModel.Role" Width="1.5" PointX="1.5" PointY="14.875" />
+        <EntityTypeShape EntityType="PracticeMarketPlaceModel.User" Width="1.5" PointX="0.75" PointY="8.375" />
         <AssociationConnector Association="PracticeMarketPlaceModel.FK_Basket_Product" />
         <AssociationConnector Association="PracticeMarketPlaceModel.FK_Basket_User" />
         <AssociationConnector Association="PracticeMarketPlaceModel.FK_Product_Country" />

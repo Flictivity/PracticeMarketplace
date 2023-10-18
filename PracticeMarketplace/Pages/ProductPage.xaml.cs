@@ -1,23 +1,13 @@
-﻿using MaterialDesignThemes.Wpf;
-using Microsoft.Win32;
+﻿using Microsoft.Win32;
 using PracticeMarketplace.ADO;
-using System;
-using System.Collections.Generic;
-using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace PracticeMarketplace.Pages
 {
@@ -35,7 +25,7 @@ namespace PracticeMarketplace.Pages
             cbCountries.ItemsSource = App.Connection.Country.ToList();
 
             var dbProduct = App.Connection.Product.FirstOrDefault(x => x.Id == productId);
-            if(dbProduct != null) 
+            if (dbProduct != null)
             {
                 product = dbProduct;
                 isEdit = true;
@@ -71,7 +61,7 @@ namespace PracticeMarketplace.Pages
                 snackbar.MessageQueue.Enqueue("Стоимость товара должны быть больше 0");
                 return;
             }
-            if(string.IsNullOrWhiteSpace(product.Name))
+            if (string.IsNullOrWhiteSpace(product.Name))
             {
                 snackbar.MessageQueue.Enqueue("Заполните наименование товара");
                 return;
@@ -86,7 +76,7 @@ namespace PracticeMarketplace.Pages
                 snackbar.MessageQueue.Enqueue("Заполните описание товара");
                 return;
             }
-            if(product.Country == null)
+            if (product.Country == null)
             {
                 snackbar.MessageQueue.Enqueue("Необходимо выбрать страну товара");
                 return;
@@ -96,12 +86,13 @@ namespace PracticeMarketplace.Pages
                 snackbar.MessageQueue.Enqueue("Необходимо выбрать категорию товара");
                 return;
             }
-            if(product.Image == null) {
+            if (product.Image == null)
+            {
                 snackbar.MessageQueue.Enqueue("Необходимо выбрать изображение товара");
                 return;
             }
 
-            if(!decimal.TryParse(tbCost.Text.Replace('.',','), out decimal dec))
+            if (!decimal.TryParse(tbCost.Text.Replace('.', ','), out decimal dec))
             {
                 snackbar.MessageQueue.Enqueue("Неверная стоимость товара!");
                 return;
@@ -117,7 +108,7 @@ namespace PracticeMarketplace.Pages
             {
                 App.Connection.Product.AddOrUpdate(product);
                 App.Connection.SaveChanges();
-                if(isEdit)
+                if (isEdit)
                 {
                     MessageBox.Show($"Товар успешно изменен", "Сообщение", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
@@ -131,6 +122,14 @@ namespace PracticeMarketplace.Pages
             {
                 MessageBox.Show("При сохранении товара произошла ошибка", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+
+        private void DeleteBtnClick(object sender, RoutedEventArgs e)
+        {
+            product.IsDeleted = true;
+            App.Connection.Product.AddOrUpdate(product);
+            App.Connection.SaveChanges();
+            MessageBox.Show("Товар снят с продажи", "Сообщение", MessageBoxButton.OK, MessageBoxImage.Warning);
         }
     }
 }

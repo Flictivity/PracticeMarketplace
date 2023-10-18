@@ -29,6 +29,7 @@ namespace PracticeMarketplace.ADO
         public int Country_Id { get; set; }
         public byte[] Image { get; set; }
         public string ArticleNumber { get; set; }
+        public Nullable<bool> IsDeleted { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Basket> Basket { get; set; }

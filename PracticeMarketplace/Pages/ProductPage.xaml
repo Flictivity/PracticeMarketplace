@@ -127,6 +127,7 @@
         </Grid>
         <StackPanel Grid.Row="1">
             <Button Click="SaveBtnClick" Visibility="{Binding ManagerProductButtonsVisibility}" Style="{DynamicResource MaterialDesignFlatMidBgButton}" Height="40" VerticalAlignment="Top" Margin="0 5 0 0" Content="Сохранить"/>
+            <Button Click="DeleteBtnClick" Visibility="{Binding ManagerProductButtonsVisibility}" Style="{DynamicResource MaterialDesignFlatMidBgButton}" Background="{DynamicResource MaterialDesignValidationErrorBrush}" Height="40" VerticalAlignment="Top" Margin="0 5 0 0" Content="Снять с продажи"/>
             <materialDesign:Snackbar Margin="0 5 0 0" MessageQueue="{materialDesign:MessageQueue}" x:Name="snackbar" HorizontalAlignment="Stretch" />
         </StackPanel>
     </Grid>

@@ -1,9 +1,7 @@
-﻿using Microsoft.Win32;
-using PracticeMarketplace.ADO;
+﻿using PracticeMarketplace.ADO;
 using PracticeMarketplace.Dto;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -46,12 +44,12 @@ namespace PracticeMarketplace.Pages
                 App.Connection.Basket.Remove(basketProduct);
             }
             App.Connection.SaveChanges();
-            UpdateData() ;
+            UpdateData();
         }
 
         private void AddToBasketBtnClick(object sender, RoutedEventArgs e)
         {
-            if(App.CurrentUser is null || App.CurrentUser.Role_Id != 2)
+            if (App.CurrentUser is null || App.CurrentUser.Role_Id != 2)
             {
                 snackbar.MessageQueue.Enqueue("Для добавления товара в корзину необходимо авторизоваться");
                 return;
@@ -105,7 +103,7 @@ namespace PracticeMarketplace.Pages
             }
 
             SourceData = App.Connection.Product.ToList()
-                .Where(x => _productTypeFilterQuery(x) && _costFilterQuery(x) && _countryFilterQuery(x))
+                .Where(x => _productTypeFilterQuery(x) && _costFilterQuery(x) && _countryFilterQuery(x) && x.IsDeleted == false)
                 .OrderBy(x => _sortQuery(x))
                 .ToList();
             Search();

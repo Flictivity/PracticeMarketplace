@@ -66,6 +66,7 @@
           <Property Name="Country_Id" Type="int" Nullable="false" />
           <Property Name="Image" Type="image" />
           <Property Name="ArticleNumber" Type="varchar" MaxLength="11" />
+          <Property Name="IsDeleted" Type="bit" />
         </EntityType>
         <EntityType Name="ProductCategory">
           <Key>
@@ -392,6 +393,7 @@
           <Property Name="Country_Id" Type="Int32" Nullable="false" />
           <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="ArticleNumber" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="IsDeleted" Type="Boolean" />
           <NavigationProperty Name="Basket" Relationship="PracticeMarketPlaceModel.FK_Basket_Product" FromRole="Product" ToRole="Basket" />
           <NavigationProperty Name="Country" Relationship="PracticeMarketPlaceModel.FK_Product_Country" FromRole="Product" ToRole="Country" />
           <NavigationProperty Name="OrderItem" Relationship="PracticeMarketPlaceModel.FK_OrderItem_Product" FromRole="Product" ToRole="OrderItem" />
@@ -611,6 +613,7 @@
           <EntitySetMapping Name="Product">
             <EntityTypeMapping TypeName="PracticeMarketPlaceModel.Product">
               <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="ArticleNumber" ColumnName="ArticleNumber" />
                 <ScalarProperty Name="Image" ColumnName="Image" />
                 <ScalarProperty Name="Country_Id" ColumnName="Country_Id" />
