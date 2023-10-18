@@ -1,4 +1,5 @@
 ﻿using PracticeMarketplace.ADO;
+using PracticeMarketplace.Windows;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -86,6 +87,17 @@ namespace PracticeMarketplace.Pages
                 _statusFilterQuery = x => x.Status_Id == item.Id;
             }
 
+            UpdateData();
+        }
+
+        private void ChangeStatusBtnClick(object sender, RoutedEventArgs e)
+        {
+            var window = new ChangeOrderStatusWindow((Order)((Button)sender).Tag);
+
+            if (window.ShowDialog() == false)
+            {
+                return;
+            }
             UpdateData();
         }
     }

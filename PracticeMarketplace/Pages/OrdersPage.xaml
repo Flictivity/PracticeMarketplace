@@ -21,19 +21,18 @@
             </Grid.ColumnDefinitions>
 
             <TextBlock Text="Заказы" FontWeight="Bold" FontSize="20" VerticalAlignment="Center" Margin="10" Foreground="{StaticResource PrimaryHueMidBrush}"></TextBlock>
-        </Grid>
-        <Grid Grid.Row="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="4*"/>
-            </Grid.RowDefinitions>
-            <ComboBox Grid.Row="0" SelectionChanged="StatusFilter" x:Name="cbStatuses" VerticalAlignment="Center" HorizontalAlignment="Right" materialDesign:HintAssist.Hint="Статус" Margin="10" Width="190" Style="{StaticResource MaterialDesignOutlinedComboBox}">
+            <ComboBox Grid.Row="0" Grid.Column="1" SelectionChanged="StatusFilter" x:Name="cbStatuses" VerticalAlignment="Center" HorizontalAlignment="Right" materialDesign:HintAssist.Hint="Статус" Margin="10" Width="190" Style="{StaticResource MaterialDesignOutlinedComboBox}">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding Name}"/>
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="4*"/>
+            </Grid.RowDefinitions>
             <StackPanel Grid.RowSpan="2" x:Name="panelEmpty" Panel.ZIndex="1" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <TextBlock Style="{DynamicResource MaterialDesignHeadline2TextBlock}" Margin="0 0 10 0">
                     Кажется у вас нет заказов :(
@@ -43,7 +42,7 @@
                 </TextBlock>
             </StackPanel>
             <Grid Grid.Row="1" HorizontalAlignment="Stretch">
-                <ListView d:ItemsSource="{d:SampleData ItemCount=5}" x:Name="lvOrders">
+                <ListView d:ItemsSource="{d:SampleData ItemCount=5}" x:Name="lvOrders" ScrollViewer.CanContentScroll="False">
                     <ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">
                             <Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>
@@ -51,7 +50,7 @@
                     </ListView.ItemContainerStyle>
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <materialDesign:Card >
+                            <materialDesign:Card Margin="0 5 0 5">
                                 <Grid HorizontalAlignment="Stretch">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="*"/>
@@ -61,6 +60,7 @@
                                     <TextBlock HorizontalAlignment="Left" Margin="10 0 0 0"
                                                 Style="{DynamicResource MaterialDesignHeadline6TextBlock}"
                                                 Text="{Binding StringFormat=ID заказа {0}, Path=Id}" Grid.Row="0"  VerticalAlignment="Center"/>
+                                    <Button Visibility="{Binding ChangeStatusBtnVisibility}" Click="ChangeStatusBtnClick" HorizontalAlignment="Right" Margin="0 0 10 0" Content="Изменить" Tag="{Binding}"/>
                                     <StackPanel Grid.Row="1" Margin="10 0 0 0">
                                         <StackPanel Orientation="Horizontal">
                                             <TextBlock HorizontalAlignment="Left"
@@ -109,7 +109,7 @@
                                                         Style="{DynamicResource MaterialDesignHeadline6TextBlock}"
                                                         Text="Товары" TextWrapping="Wrap" VerticalAlignment="Center"/>
                                         </Expander.Header>
-                                        <ListView ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True" d:ItemsSource="{d:SampleData ItemCount=5}" ItemsSource="{Binding OrderItem}" Height="300">
+                                        <ListView ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="False" d:ItemsSource="{d:SampleData ItemCount=5}" ItemsSource="{Binding OrderItem}" Height="300">
                                             <ListView.ItemTemplate>
                                                 <DataTemplate>
                                                     <materialDesign:Card Padding="10" Margin="0 5 0 5">
