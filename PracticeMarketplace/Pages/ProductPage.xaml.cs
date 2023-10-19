@@ -1,12 +1,14 @@
 ﻿using Microsoft.Win32;
 using PracticeMarketplace.ADO;
+using QRCoder;
 using System.Data.Entity.Migrations;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 
 namespace PracticeMarketplace.Pages
@@ -31,6 +33,29 @@ namespace PracticeMarketplace.Pages
                 isEdit = true;
             }
             DataContext = product;
+
+            GenerateCode();
+        }
+
+        private void GenerateCode()
+        {
+            var link = $"https://www.ozon.ru/search/?deny_category_prediction=true&from_global=true&text={string.Join("", product.Name.Split())}";
+            var generator = new QRCodeGenerator();
+            var codeData = generator.CreateQrCode(link, QRCodeGenerator.ECCLevel.L);
+            QRCode code = new QRCode(codeData);
+
+            Bitmap bitmap = code.GetGraphic(100);
+            using (MemoryStream memory = new MemoryStream())
+            {
+                bitmap.Save(memory, System.Drawing.Imaging.ImageFormat.Bmp);
+                memory.Position = 0;
+                BitmapImage bitmapimage = new BitmapImage();
+                bitmapimage.BeginInit();
+                bitmapimage.StreamSource = memory;
+                bitmapimage.CacheOption = BitmapCacheOption.OnLoad;
+                bitmapimage.EndInit();
+                imgQr.Source = bitmapimage;
+            }
         }
 
         private void AddImageBtnClick(object sender, RoutedEventArgs e)
@@ -49,13 +74,13 @@ namespace PracticeMarketplace.Pages
 
             var byteArray = File.ReadAllBytes(window.FileName);
             product.Image = byteArray;
-            BindingOperations.GetBindingExpressionBase(imgPhoto, Image.SourceProperty).UpdateTarget();
+            BindingOperations.GetBindingExpressionBase(imgPhoto, System.Windows.Controls.Image.SourceProperty).UpdateTarget();
             App.Connection.SaveChangesAsync();
         }
 
         private void SaveBtnClick(object sender, RoutedEventArgs e)
         {
-            snackbar.Background = Brushes.Red;
+            snackbar.Background = System.Windows.Media.Brushes.Red;
             if (product.Cost <= 0)
             {
                 snackbar.MessageQueue.Enqueue("Стоимость товара должны быть больше 0");
