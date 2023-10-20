@@ -1,5 +1,7 @@
-﻿using System.Linq;
+﻿
+using System.Linq;
 using System.Windows;
+using System.Windows.Media;
 
 namespace PracticeMarketplace.ADO
 {
@@ -33,5 +35,8 @@ namespace PracticeMarketplace.ADO
         public string ShortName => this.Name.Length > 15 ? $"{this.Name.Substring(0, 15)}..." : this.Name;
 
         public bool IsProductReadonly => App.CurrentUser == null || (App.CurrentUser != null && App.CurrentUser.Role_Id == 2);
+
+        public string ProductStateText => IsDeleted.Value ? "Вернуть в продажу" : "Снять с продажи";
+        public Brush EditBtnColor => IsDeleted.Value ? Brushes.Red : new SolidColorBrush(Color.FromArgb(255, 63, 81, 181));
     }
 }

@@ -151,10 +151,59 @@ namespace PracticeMarketplace.Pages
 
         private void DeleteBtnClick(object sender, RoutedEventArgs e)
         {
-            product.IsDeleted = true;
+            if (product.IsDeleted.Value)
+            {
+                product.IsDeleted = false;
+            }
+            else
+            {
+                product.IsDeleted = true;
+            }
             App.Connection.Product.AddOrUpdate(product);
             App.Connection.SaveChanges();
-            MessageBox.Show("Товар снят с продажи", "Сообщение", MessageBoxButton.OK, MessageBoxImage.Warning);
+            btnDelete.GetBindingExpression(Button.ContentProperty).UpdateTarget();
+            MessageBox.Show(product.IsDeleted.Value ? "Товар снят с продажи" : "Товар возвращен в продажу", "Сообщение", MessageBoxButton.OK, MessageBoxImage.Warning);
+        }
+
+        private void RemoveFromBasketBtnClick(object sender, RoutedEventArgs e)
+        {
+            var productId = (int)((Button)sender).Tag;
+            var basketProduct = App.CurrentUser.Basket.FirstOrDefault(x => x.Product_Id == productId);
+            if (basketProduct != null && basketProduct.Count > 0)
+            {
+                basketProduct.Count--;
+            }
+            if (basketProduct?.Count == 0)
+            {
+                App.Connection.Basket.Remove(basketProduct);
+            }
+            App.Connection.SaveChanges();
+            tbCount.GetBindingExpression(TextBlock.TextProperty).UpdateTarget();
+        }
+
+        private void AddToBasketBtnClick(object sender, RoutedEventArgs e)
+        {
+            if (App.CurrentUser is null || App.CurrentUser.Role_Id != 2)
+            {
+                snackbar.MessageQueue.Enqueue("Для добавления товара в корзину необходимо авторизоваться");
+                return;
+            }
+            var productId = (int)((Button)sender).Tag;
+            var basketProduct = App.CurrentUser.Basket.FirstOrDefault(x => x.Product_Id == productId);
+            if (basketProduct != null)
+            {
+                basketProduct.Count++;
+            }
+            else
+            {
+                App.CurrentUser.Basket.Add(new Basket()
+                {
+                    Product_Id = productId,
+                    Count = 1
+                });
+            }
+            App.Connection.SaveChanges();
+            tbCount.GetBindingExpression(TextBlock.TextProperty).UpdateTarget();
         }
     }
 }

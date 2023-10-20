@@ -103,7 +103,7 @@ namespace PracticeMarketplace.Pages
             }
 
             SourceData = App.Connection.Product.ToList()
-                .Where(x => _productTypeFilterQuery(x) && _costFilterQuery(x) && _countryFilterQuery(x) && x.IsDeleted == false)
+                .Where(x => _productTypeFilterQuery(x) && _costFilterQuery(x) && _countryFilterQuery(x) && (App.CurrentUser != null && App.CurrentUser.Role_Id == 1 ? true : x.IsDeleted == false))
                 .OrderBy(x => _sortQuery(x))
                 .ToList();
             Search();
