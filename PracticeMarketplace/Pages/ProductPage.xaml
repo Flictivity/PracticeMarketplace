@@ -76,6 +76,7 @@
                               VerticalAlignment="Center" Grid.Row="1" Margin="5"
                               materialDesign:HintAssist.Hint="Категория"
                               IsReadOnly="{Binding IsProductReadonly}"
+                              IsEnabled="{Binding IsProductEnabled}"
                               SelectedItem="{Binding ProductCategory}">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
@@ -113,6 +114,7 @@
                               VerticalAlignment="Center" Grid.Row="1" Margin="5"
                               materialDesign:HintAssist.Hint="Страна-изготовитель"
                               IsReadOnly="{Binding IsProductReadonly}"
+                              IsEnabled="{Binding IsProductEnabled}"
                               SelectedItem="{Binding Country}">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>

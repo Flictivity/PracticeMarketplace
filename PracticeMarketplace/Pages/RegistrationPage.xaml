@@ -28,7 +28,7 @@
             <TextBox Style="{StaticResource MaterialDesignOutlinedTextBox}" x:Name="tbLogin" FontSize="15" Margin="5" VerticalAlignment="Center" materialDesign:HintAssist.Hint="Логин"></TextBox>
             <PasswordBox x:Name="pbPassword" Style="{DynamicResource MaterialDesignOutlinedRevealPasswordBox}" FontSize="15" Margin="5" VerticalAlignment="Center" materialDesign:HintAssist.Hint="Пароль"></PasswordBox>
             <Button Grid.Row="5" Click="RegisterBtnClick" Content="Зарегистрироваться" Height="40" Margin="5"></Button>
-            <TextBlock Grid.Row="6" FontSize="16" HorizontalAlignment="Center"><Hyperlink NavigateUri="AuthorizationPage.xaml">Уже есть аккаунт?</Hyperlink></TextBlock>
+            <Button Background="Transparent" BorderBrush="Transparent" Grid.Row="6" FontSize="16" HorizontalAlignment="Center" Foreground="BlueViolet" Click="AuthorizationNavigate">Уже есть аккаунт</Button>
         </StackPanel>
         <materialDesign:Snackbar
                 Grid.Column="1"

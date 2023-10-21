@@ -1,19 +1,8 @@
-﻿using MaterialDesignThemes.Wpf;
-using PracticeMarketplace.ADO;
-using System;
-using System.Collections.Generic;
+﻿using PracticeMarketplace.ADO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace PracticeMarketplace.Pages
 {
@@ -32,7 +21,7 @@ namespace PracticeMarketplace.Pages
             try
             {
                 if (string.IsNullOrEmpty(tbName.Text) || string.IsNullOrEmpty(tbSurname.Text) ||
-                    string.IsNullOrEmpty(tbLogin.Text) ||  string.IsNullOrEmpty(pbPassword.Password))
+                    string.IsNullOrEmpty(tbLogin.Text) || string.IsNullOrEmpty(pbPassword.Password))
                 {
                     snackbar.MessageQueue?.Enqueue("Необходимо заполнить все поля");
                     return;
@@ -70,6 +59,11 @@ namespace PracticeMarketplace.Pages
                 snackbar.MessageQueue?.Enqueue("Произошла ошибка!");
                 return;
             }
+        }
+
+        private void AuthorizationNavigate(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
         }
     }
 }

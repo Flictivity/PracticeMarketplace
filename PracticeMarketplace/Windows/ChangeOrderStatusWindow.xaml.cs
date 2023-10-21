@@ -1,17 +1,7 @@
 ﻿using PracticeMarketplace.ADO;
-using System;
-using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace PracticeMarketplace.Windows
 {
@@ -36,6 +26,8 @@ namespace PracticeMarketplace.Windows
                 return;
             }
             _order.OrderStatus = cbStatuses.SelectedItem as OrderStatus;
+            App.Connection.Order.AddOrUpdate(_order);
+            App.Connection.SaveChanges();
             this.DialogResult = true;
         }
     }
