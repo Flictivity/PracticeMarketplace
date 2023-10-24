@@ -37,7 +37,8 @@ namespace PracticeMarketplace.ADO
         public bool IsProductReadonly => App.CurrentUser == null || (App.CurrentUser != null && App.CurrentUser.Role_Id == 2);
         public bool IsProductEnabled => !(App.CurrentUser == null || (App.CurrentUser != null && App.CurrentUser.Role_Id == 2));
 
-        public string ProductStateText => IsDeleted.Value ? "Вернуть в продажу" : "Снять с продажи";
+        public string ProductStateText => IsDeleted != null && IsDeleted.Value ? "Вернуть в продажу" : "Снять с продажи";
+        public Visibility ProductStateVisibility => App.CurrentUser != null && App.CurrentUser.Role_Id == 1 && IsDeleted != null ? Visibility.Visible : Visibility.Collapsed;
         public Brush EditBtnColor => IsDeleted.Value ? Brushes.Red : new SolidColorBrush(Color.FromArgb(255, 63, 81, 181));
     }
 }

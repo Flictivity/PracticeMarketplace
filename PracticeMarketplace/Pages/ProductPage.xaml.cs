@@ -31,10 +31,9 @@ namespace PracticeMarketplace.Pages
             {
                 product = dbProduct;
                 isEdit = true;
+                GenerateCode();
             }
             DataContext = product;
-
-            GenerateCode();
         }
 
         private void GenerateCode()
