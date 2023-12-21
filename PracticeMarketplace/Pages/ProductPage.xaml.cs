@@ -38,22 +38,29 @@ namespace PracticeMarketplace.Pages
 
         private void GenerateCode()
         {
-            var link = $"https://www.ozon.ru/search/?deny_category_prediction=true&from_global=true&text={string.Join("", product.Name.Split())}";
-            var generator = new QRCodeGenerator();
-            var codeData = generator.CreateQrCode(link, QRCodeGenerator.ECCLevel.L);
-            QRCode code = new QRCode(codeData);
-
-            Bitmap bitmap = code.GetGraphic(100);
-            using (MemoryStream memory = new MemoryStream())
+            try
             {
-                bitmap.Save(memory, System.Drawing.Imaging.ImageFormat.Bmp);
-                memory.Position = 0;
-                BitmapImage bitmapimage = new BitmapImage();
-                bitmapimage.BeginInit();
-                bitmapimage.StreamSource = memory;
-                bitmapimage.CacheOption = BitmapCacheOption.OnLoad;
-                bitmapimage.EndInit();
-                imgQr.Source = bitmapimage;
+                var link = $"https://www.ozon.ru/search/?deny_category_prediction=true&from_global=true&text={string.Join("", product.Name.Split())}";
+                var generator = new QRCodeGenerator();
+                var codeData = generator.CreateQrCode(link, QRCodeGenerator.ECCLevel.L);
+                QRCode code = new QRCode(codeData);
+
+                Bitmap bitmap = code.GetGraphic(100);
+                using (MemoryStream memory = new MemoryStream())
+                {
+                    bitmap.Save(memory, System.Drawing.Imaging.ImageFormat.Bmp);
+                    memory.Position = 0;
+                    BitmapImage bitmapimage = new BitmapImage();
+                    bitmapimage.BeginInit();
+                    bitmapimage.StreamSource = memory;
+                    bitmapimage.CacheOption = BitmapCacheOption.OnLoad;
+                    bitmapimage.EndInit();
+                    imgQr.Source = bitmapimage;
+                }
+            }
+            catch
+            {
+
             }
         }
 
