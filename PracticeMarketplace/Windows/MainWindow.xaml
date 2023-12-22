@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PracticeMarketplace"
         mc:Ignorable="d"
-        Title="MainWindow" Height="720" Width="1280" MinHeight="720" MinWidth="1280"
+        Title="Автополка" Height="720" Width="1280" MinHeight="720" MinWidth="1280"
         xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes" WindowStartupLocation="CenterScreen" WindowState="Maximized">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -16,7 +16,7 @@
         <StackPanel Grid.Row="1"
                     VerticalAlignment="Center"
                     Margin="15,0,5,0">
-                            <Image Source="/Images/logo.png" Width="190" Height="180"/>
+                            <Image Source="/Images/logopp.png" Width="190" Height="180"/>
             <Button material:ButtonAssist.CornerRadius="10"
                                     FontSize="24" 
                                     Height="50"

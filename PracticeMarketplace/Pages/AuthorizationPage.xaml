@@ -21,10 +21,17 @@
         <RowDefinition Height="*"></RowDefinition>
     </Grid.RowDefinitions>
         <StackPanel Grid.Row="1" Grid.Column="1">
-            <Image Source="/Images/logo.png" Width="200" Height="200"/>
-            <TextBlock Text="Авторизация" FontWeight="Bold" FontSize="28" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10" Foreground="{StaticResource PrimaryHueMidBrush}"></TextBlock>
-            <TextBox Style="{StaticResource MaterialDesignOutlinedTextBox}" x:Name="tbLogin" FontSize="15" Margin="5" VerticalAlignment="Center" materialDesign:HintAssist.Hint="Логин"></TextBox>
-        <PasswordBox x:Name="pbPassword" Style="{DynamicResource MaterialDesignOutlinedRevealPasswordBox}" FontSize="15" Margin="5" VerticalAlignment="Center" materialDesign:HintAssist.Hint="Пароль"></PasswordBox>
+            <Image Source="/Images/logopp.png" Width="200" Height="200"/>
+            <TextBlock Text="Авторизация" 
+                       FontWeight="Bold" FontSize="28" HorizontalAlignment="Center"
+                       VerticalAlignment="Center" Margin="10"
+                       Foreground="{StaticResource PrimaryHueMidBrush}"></TextBlock>
+            <TextBox Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                     x:Name="tbLogin" FontSize="15" Margin="5"
+                     VerticalAlignment="Center" materialDesign:HintAssist.Hint="Логин"></TextBox>
+        <PasswordBox x:Name="pbPassword"
+                     Style="{DynamicResource MaterialDesignOutlinedRevealPasswordBox}"
+                     FontSize="15" Margin="5" VerticalAlignment="Center" materialDesign:HintAssist.Hint="Пароль"></PasswordBox>
 
         <Button Click="AuthorizationBtnClick" Content="Войти" Height="40" Margin="5"></Button>
         <TextBlock FontSize="16" HorizontalAlignment="Center"><Hyperlink NavigateUri="RegistrationPage.xaml">Нет аккаунта?</Hyperlink></TextBlock>

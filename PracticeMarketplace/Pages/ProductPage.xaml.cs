@@ -137,6 +137,7 @@ namespace PracticeMarketplace.Pages
 
             try
             {
+                product.IsDeleted = false;
                 App.Connection.Product.AddOrUpdate(product);
                 App.Connection.SaveChanges();
                 if (isEdit)

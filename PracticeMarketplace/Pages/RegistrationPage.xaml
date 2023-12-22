@@ -21,7 +21,7 @@
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="1" Grid.Column="1">
-            <Image Source="/Images/logo.png" Width="200" Height="200"/>
+            <Image Source="/Images/logopp.png" Width="200" Height="200"/>
             <TextBlock Grid.Row="0" Text="Регистрация" FontWeight="Bold" FontSize="28" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10" Foreground="{StaticResource PrimaryHueMidBrush}"></TextBlock>
             <TextBox Style="{StaticResource MaterialDesignOutlinedTextBox}" x:Name="tbName" FontSize="15" Margin="5" VerticalAlignment="Center" materialDesign:HintAssist.Hint="Имя"></TextBox>
             <TextBox Style="{StaticResource MaterialDesignOutlinedTextBox}" x:Name="tbSurname" FontSize="15" Margin="5" VerticalAlignment="Center" materialDesign:HintAssist.Hint="Фамилия"></TextBox>

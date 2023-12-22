@@ -90,7 +90,8 @@ namespace PracticeMarketplace.Pages
             cbSortByCost.SelectedItem = _sortTitles.FirstOrDefault(x => x == "По умолчанию");
 
             costFilterData.CostMin = 0;
-            costFilterData.CostMax = (int)App.Connection.Product.Max(x => x.Cost);
+            var s = App.Connection.Product.ToList();
+            costFilterData.CostMax = s.Count == 0 ? 0 : (int)s.Max(x => x.Cost);
 
             this.DataContext = costFilterData;
         }
